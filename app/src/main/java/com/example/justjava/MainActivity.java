@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     countView.setText(count);
                 }else {
 
-                    count +=1;
+                    count -=1;
                     countView.setText(count);
                 }
             }
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               count -=1 ;
+               count +=1 ;
                countView.setText(count);
 
             }
