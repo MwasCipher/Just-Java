@@ -27,7 +27,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/deductButton"
+            android:id="@+id/deductCountButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -42,7 +42,7 @@
             android:layout_margin="15dp"/>
 
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/addCountButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -51,6 +51,15 @@
             android:textSize="20sp"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/summariseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price Summary"
+        android:textColor="@android:color/background_dark"
+        android:layout_margin="15dp"
+        android:textSize="15sp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -61,6 +70,7 @@
         android:textColor="@android:color/background_dark"/>
 
     <TextView
+        android:id="@+id/priceSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
