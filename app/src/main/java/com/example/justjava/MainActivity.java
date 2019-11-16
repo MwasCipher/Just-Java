@@ -8,46 +8,38 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int count, price;
-    TextView countView, priceSummaryTV;
-    Button summaryButton,addCountBtn, reduceCountBtn;
+    int quantity, price = 3, total;
+    TextView countTV, priceSummaryTV;
+    Button summaryButton, incrementButton, decrementButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        count = 0;
-        countView = findViewById(R.id.countTextView);
-        priceSummaryTV = findViewById(R.id.priceSummary);
-        summaryButton = findViewById(R.id.summariseButton);
-        addCountBtn = findViewById(R.id.addCountButton);
-        reduceCountBtn = findViewById(R.id.deductCountButton);
+        quantity = 0;
+        countTV = findViewById(R.id.quantity_count_text_view);
+        priceSummaryTV = findViewById(R.id.price_summary_text_view);
+        summaryButton = findViewById(R.id.summarise_button);
+        incrementButton = findViewById(R.id.increment_button);
+        decrementButton = findViewById(R.id.decrement_button);
 
-        countView.setText(count);
 
-        reduceCountBtn.setOnClickListener(new View.OnClickListener() {
+
+        decrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(count == 0){
-                    reduceCountBtn.setActivated(false);
-                    count = 0;
-                    countView.setText(count);
-                }else {
+                    decrementQuantity();
 
-                    count -=1;
-                    countView.setText(count);
-                }
             }
         });
 
-        addCountBtn.setOnClickListener(new View.OnClickListener() {
+        incrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               count +=1 ;
-               countView.setText(count);
+               incrementQuantity();
 
             }
         });
@@ -55,10 +47,24 @@ public class MainActivity extends AppCompatActivity {
         summaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                price = 3* count;
-                priceSummaryTV.setText("Total Cost: " + "$" + price  + "\n Thank You Come Again!!!" );
+                total = price * quantity;
+                priceSummaryTV.setText("Total Cost: " + "$" + total  + "\n Thank You Come Again!!!" );
             }
         });
 
+    }
+
+    public void incrementQuantity( ){
+        quantity = quantity + 1;
+        displayQuantity(quantity);
+    }
+
+    public void decrementQuantity(){
+        quantity = quantity - 1;
+        displayQuantity(quantity);
+    }
+
+    public void displayQuantity(int quantity){
+        countTV.setText(String.valueOf(quantity));
     }
 }
