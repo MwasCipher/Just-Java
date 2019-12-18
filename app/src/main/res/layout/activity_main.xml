@@ -6,13 +6,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name Here..."
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:layout_margin="15dp"
+        android:id="@+id/name_edit_text"/>
+
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:textSize="20sp"
         android:textColor="@android:color/background_dark"
-        android:text="Quantity!" />
+        android:text="Select Quantity"
+        android:textAllCaps="true"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,11 +60,46 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Toppings"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_margin="15dp"
+        android:fontFamily="sans-serif-medium"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped Cream"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_margin="15dp"
+        android:id="@+id/whipped_cream_check_box"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_margin="15dp"
+        android:id="@+id/chocolate_check_box"/>
+
+
+
     <Button
         android:id="@+id/summarise_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price Summary"
+        android:text="Order Summary"
+        android:textAllCaps="true"
         android:textColor="@android:color/background_dark"
         android:layout_margin="15dp"
         android:textSize="15sp"/>
@@ -56,13 +107,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Price"
+        android:text="Order Summary"
+        android:textAllCaps="true"
         android:layout_margin="15dp"
         android:textSize="20sp"
         android:textColor="@android:color/background_dark"/>
 
     <TextView
-        android:id="@+id/price_summary_text_view"
+        android:id="@+id/order_summary_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
