@@ -96,23 +96,34 @@ public class MainActivity extends AppCompatActivity {
 
     private String createOrderSummary(){
 
-        total = price * quantity;
-        String name = nameEditText.toString().trim();
-
-        String summaryMessage = "Name: " + name;
-        summaryMessage = summaryMessage + "\n Quantity: " + quantity;
-        summaryMessage = summaryMessage + "\n Total Price: " + total;
+        String name = nameEditText.getText().toString().trim();
+        String summaryMessage = " Name: " + name;
 
         if (whippedCreamCheckBox.isChecked()){
             summaryMessage = summaryMessage + "\n Topped With Whipped Cream.... Yummy";
+
         }
 
         if (chocolateCheckBox.isChecked()){
             summaryMessage = summaryMessage + "\n Topped  With  Chocolate.... Fabulous";
+
         }
 
+        total = price * quantity;
 
-        summaryMessage = summaryMessage + "\nThank You And Come Again";
+        if (whippedCreamCheckBox.isChecked()){
+            total +=1;
+        }
+
+        if (chocolateCheckBox.isChecked()){
+            total +=3;
+        }
+
+        summaryMessage = summaryMessage + "\n Quantity: " + quantity;
+        summaryMessage = summaryMessage + "\n Total Price: " + total;
+
+
+        summaryMessage = summaryMessage + "\n Thank You And Come Again";
 
 
 
