@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        quantity = 0;
+        quantity = 1;
 
         nameEditText = findViewById(R.id.name_edit_text);
 
@@ -35,27 +35,20 @@ public class MainActivity extends AppCompatActivity {
         whippedCreamCheckBox = findViewById(R.id.whipped_cream_check_box);
 
 
-
-
-
         countTV.setText(String.valueOf(quantity));
-
-
 
 
         decrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (quantity > 0){
+                if (quantity > 1) {
 
                     decrementQuantity();
 
-                }else{
-                    quantity = 0;
-                    countTV.setText(String.valueOf(quantity));
+                } else {
+                    return;
                 }
-
 
 
             }
@@ -65,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               incrementQuantity();
+                incrementQuantity();
 
             }
         });
@@ -80,45 +73,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void incrementQuantity( ){
-        quantity = quantity + 1;
-        displayQuantity(quantity);
+    public void incrementQuantity() {
+        if (quantity >= 1 && quantity <= 100) {
+            quantity = quantity + 1;
+            displayQuantity(quantity);
+        }else {
+            return;
+        }
     }
 
-    public void decrementQuantity(){
+    public void decrementQuantity() {
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
 
-    public void displayQuantity(int quantity){
+    public void displayQuantity(int quantity) {
         countTV.setText(String.valueOf(quantity));
     }
 
-    private String createOrderSummary(){
+    private String createOrderSummary() {
 
         String name = nameEditText.getText().toString().trim();
         String summaryMessage = " Name: " + name;
 
-        if (whippedCreamCheckBox.isChecked()){
+        if (whippedCreamCheckBox.isChecked()) {
             summaryMessage = summaryMessage + "\n Topped With Whipped Cream.... Yummy";
 
         }
 
-        if (chocolateCheckBox.isChecked()){
+        if (chocolateCheckBox.isChecked()) {
             summaryMessage = summaryMessage + "\n Topped  With  Chocolate.... Fabulous";
 
         }
 
+
+        if (whippedCreamCheckBox.isChecked()) {
+            price += 1;
+
+        }
+
+        if (chocolateCheckBox.isChecked()) {
+            price += 3;
+        }
+
         total = price * quantity;
-
-        if (whippedCreamCheckBox.isChecked()){
-            price +=1;
-        }
-
-        if (chocolateCheckBox.isChecked()){
-            price +=3;
-        }
-
         summaryMessage = summaryMessage + "\n Quantity: " + quantity;
         summaryMessage = summaryMessage + "\n Total Price: " + total;
 
@@ -126,11 +124,10 @@ public class MainActivity extends AppCompatActivity {
         summaryMessage = summaryMessage + "\n Thank You And Come Again";
 
 
-
         return summaryMessage;
     }
 
-    private void submitOrder(){
+    private void submitOrder() {
         String summaryMessage = createOrderSummary();
         priceSummaryTV.setText(summaryMessage);
     }
