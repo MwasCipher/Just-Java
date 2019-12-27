@@ -33,7 +33,7 @@
             android:text="Select Quantity"
             android:textAllCaps="true"
             android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
+            style="@style/HeaderTextStyle" />
 
 
         <LinearLayout
@@ -74,7 +74,7 @@
             android:text="@string/choose_toppings_heading"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            style="@style/HeaderTextStyle"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/whipped_cream_check_box"
