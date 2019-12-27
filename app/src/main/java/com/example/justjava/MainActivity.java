@@ -125,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitOrder(){
 
-        boolean hasWhippedCream = true;
-        boolean hasChocolate = true;
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        boolean hasChocolate = chocolateCheckBox.isChecked();
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
 
