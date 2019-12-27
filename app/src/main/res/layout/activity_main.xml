@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Choose Toppings"
+            android:text="@string/choose_toppings_heading"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -83,7 +83,7 @@
             android:layout_margin="15dp"
             android:fontFamily="sans-serif-light"
             android:paddingLeft="24dp"
-            android:text="Whipped Cream"
+            android:text="@string/whipped_cream_text"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
@@ -95,7 +95,7 @@
             android:layout_margin="15dp"
             android:fontFamily="sans-serif-light"
             android:paddingLeft="24dp"
-            android:text="Chocolate"
+            android:text="@string/chocolate_text"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Generate Order"
+            android:text="@string/generate_order_button"
             android:textAllCaps="true"
             android:textColor="@android:color/background_dark"
             android:textSize="15sp" />

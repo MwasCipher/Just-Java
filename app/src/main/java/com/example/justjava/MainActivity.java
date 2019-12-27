@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int quantity, price = 3, total;
+    int quantity;
     EditText nameEditText;
     TextView countTV;
     Button summaryButton, incrementButton, decrementButton;
@@ -69,17 +69,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                createOrderSummary();
+                submitOrder();
             }
         });
 
     }
 
     public void incrementQuantity() {
+
         if (quantity >= 1 && quantity <= 100) {
             quantity = quantity + 1;
             displayQuantity(quantity);
-        }else {
+        } else {
 
             return;
         }
@@ -94,50 +95,55 @@ public class MainActivity extends AppCompatActivity {
         countTV.setText(String.valueOf(quantity));
     }
 
-    private String createOrderSummary() {
+    private String createOrderSummary( String name, int price, boolean hasWhippedCream, boolean hasChocolate) {
 
-        String name = nameEditText.getText().toString().trim();
+
         String summaryMessage = " Name: " + name;
-
-        if (whippedCreamCheckBox.isChecked()) {
-            summaryMessage = summaryMessage + "\n Topped With Whipped Cream.... Yummy";
-
-        }
-
-        if (chocolateCheckBox.isChecked()) {
-            summaryMessage = summaryMessage + "\n Topped  With  Chocolate.... Fabulous";
-
-        }
-
-
-        if (whippedCreamCheckBox.isChecked()) {
-            price += 1;
-
-        }
-
-        if (chocolateCheckBox.isChecked()) {
-            price += 3;
-        }
-
-        total = price * quantity;
         summaryMessage = summaryMessage + "\n Quantity: " + quantity;
-        summaryMessage = summaryMessage + "\n Total Price: " + total;
-
-
+        summaryMessage = summaryMessage + "\n Total Price: " + price;
+        summaryMessage = summaryMessage + "\n Has Whipped Cream?: " + hasWhippedCream;
+        summaryMessage = summaryMessage + "\n Has Chocolate?: " + hasChocolate;
         summaryMessage = summaryMessage + "\n Thank You And Come Again";
 
-        Intent sendToEmail = new Intent(Intent.ACTION_SENDTO );
+        return summaryMessage;
+    }
+
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate){
+
+        int basePrice = 5;
+
+         if (hasWhippedCream){
+             basePrice +=2;
+         }
+
+         if (hasChocolate){
+             basePrice +=4;
+         }
+
+        return quantity * basePrice;
+    }
+
+    public void submitOrder(){
+
+        boolean hasWhippedCream = true;
+        boolean hasChocolate = true;
+
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
+
+        String name = nameEditText.getText().toString().trim();
+        String summaryMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
+
+
+        Intent sendToEmail = new Intent(Intent.ACTION_SENDTO);
 
         sendToEmail.setData(Uri.parse("mailto: "));
-        sendToEmail.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order For " +name );
-        sendToEmail.putExtra(Intent.EXTRA_TEXT, summaryMessage );
+        sendToEmail.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order For " + name);
+        sendToEmail.putExtra(Intent.EXTRA_TEXT, summaryMessage);
 
-        if (sendToEmail.resolveActivity(getPackageManager()) != null){
+        if (sendToEmail.resolveActivity(getPackageManager()) != null) {
             startActivity(sendToEmail);
         }
 
-
-        return summaryMessage;
     }
 
 }
