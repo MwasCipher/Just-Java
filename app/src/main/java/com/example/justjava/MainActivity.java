@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
         total = price * quantity;
 
         if (whippedCreamCheckBox.isChecked()){
-            total +=1;
+            price +=1;
         }
 
         if (chocolateCheckBox.isChecked()){
-            total +=3;
+            price +=3;
         }
 
         summaryMessage = summaryMessage + "\n Quantity: " + quantity;
