@@ -1,5 +1,7 @@
 package com.example.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     int quantity, price = 3, total;
     EditText nameEditText;
-    TextView countTV, priceSummaryTV;
+    TextView countTV;
     Button summaryButton, incrementButton, decrementButton;
     CheckBox chocolateCheckBox, whippedCreamCheckBox;
 
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.name_edit_text);
 
         countTV = findViewById(R.id.quantity_count_text_view);
-        priceSummaryTV = findViewById(R.id.order_summary_text_view);
         summaryButton = findViewById(R.id.summarise_button);
         incrementButton = findViewById(R.id.increment_button);
         decrementButton = findViewById(R.id.decrement_button);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     decrementQuantity();
 
                 } else {
+
                     return;
                 }
 
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                submitOrder();
+                createOrderSummary();
             }
         });
 
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             quantity = quantity + 1;
             displayQuantity(quantity);
         }else {
+
             return;
         }
     }
@@ -123,13 +126,18 @@ public class MainActivity extends AppCompatActivity {
 
         summaryMessage = summaryMessage + "\n Thank You And Come Again";
 
+        Intent sendToEmail = new Intent(Intent.ACTION_SENDTO );
+
+        sendToEmail.setData(Uri.parse("mailto: "));
+        sendToEmail.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order For " +name );
+        sendToEmail.putExtra(Intent.EXTRA_TEXT, summaryMessage );
+
+        if (sendToEmail.resolveActivity(getPackageManager()) != null){
+            startActivity(sendToEmail);
+        }
+
 
         return summaryMessage;
-    }
-
-    private void submitOrder() {
-        String summaryMessage = createOrderSummary();
-        priceSummaryTV.setText(summaryMessage);
     }
 
 }

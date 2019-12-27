@@ -106,29 +106,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Order Summary"
+            android:text="Generate Order"
             android:textAllCaps="true"
             android:textColor="@android:color/background_dark"
             android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Order Summary"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-
 
     </LinearLayout>
 
